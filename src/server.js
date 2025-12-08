@@ -5,9 +5,14 @@ require("dotenv").config();
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const overrideRoutes  = require("./routes/overrideRoutes");
+const errorHandler = require("./middlewares/errorHandler");
+const requestLogger = require("./middlewares/requestLogger");
 
 const app = express();
 app.use(express.json());
+app.use(errorHandler);
+app.use(requestLogger);
+
 
 // Routes
 app.use("/api/auth", authRoutes);
