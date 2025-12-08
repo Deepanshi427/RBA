@@ -10,14 +10,17 @@ const requestLogger = require("./middlewares/requestLogger");
 
 const app = express();
 app.use(express.json());
-app.use(errorHandler);
 app.use(requestLogger);
+
+
 
 
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/override", overrideRoutes );
+
+app.use(errorHandler);
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
