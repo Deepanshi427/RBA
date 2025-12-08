@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const overrideRoutes  = require("./routes/overrideRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 const requestLogger = require("./middlewares/requestLogger");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(requestLogger);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/override", overrideRoutes );
+app.use("/api/upload", uploadRoutes);
 
 app.use(errorHandler);
 // Connect MongoDB
